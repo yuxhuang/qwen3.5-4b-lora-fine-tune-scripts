@@ -1,0 +1,37 @@
+# LoRA SFT config for Qwen3.5-4B agentic loop (2500 examples, 48 page categories, 5 failure modes).
+# Override from CLI or set env as needed.
+
+model:
+  # Qwen3.5-4B: https://huggingface.co/Qwen/Qwen3.5-4B
+  name_or_path: "Qwen/Qwen3.5-4B"
+  use_fast_tokenizer: true
+
+lora:
+  r: 32
+  alpha: 64
+  target_modules: ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
+  lora_dropout: 0.1
+  bias: "none"
+  task_type: "CAUSAL_LM"
+
+training:
+  output_dir: "outputs/lora_sft"
+  num_train_epochs: 5
+  per_device_train_batch_size: 2
+  per_device_eval_batch_size: 2
+  gradient_accumulation_steps: 8
+  learning_rate: 1.0e-5
+  weight_decay: 0.01
+  warmup_ratio: 0.1
+  lr_scheduler_type: "cosine"
+  logging_steps: 5
+  eval_strategy: "epoch"
+  save_strategy: "epoch"
+  save_total_limit: 2
+  bf16: true
+  gradient_checkpointing: false
+  max_seq_length: 2048
+
+data:
+  train_file: "data/train.jsonl"
+  eval_file: "data/eval.jsonl"

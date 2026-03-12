@@ -1,0 +1,25 @@
+# Dedicated Miniconda environment for Qwen3.5-4B agentic loop fine-tuning.
+# Create: conda env create -f environment.yml
+# Activate: conda activate qwen-agentic-finetune
+
+name: qwen-agentic-finetune
+channels:
+  - defaults
+dependencies:
+  - python=3.12
+  - pip
+  - pip:
+    - torch
+    - torchvision
+    - transformers
+    - peft
+    - trl
+    - datasets
+    - accelerate
+    - scipy
+    - sentencepiece
+
+# Note: For GPU training, reinstall PyTorch with the CUDA wheel matching your GPU:
+#   pip uninstall torch torchvision -y
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/<your-cuda-version>
+# (e.g. cu124 for CUDA 12.4, cu130 for CUDA 13.x).

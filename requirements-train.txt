@@ -1,0 +1,18 @@
+# Pip dependencies for training (use inside conda env qwen-agentic-finetune).
+# Install after creating the conda env. Then reinstall PyTorch with the CUDA
+# wheel matching your GPU:
+#   pip install -r requirements-train.txt
+#   pip uninstall torch torchvision -y
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/<your-cuda-version>
+# (e.g. cu124 for CUDA 12.4, cu130 for CUDA 13.x).
+
+# Core (install PyTorch separately with the appropriate CUDA index)
+torch
+torchvision
+transformers
+peft
+trl
+datasets
+accelerate
+scipy
+sentencepiece

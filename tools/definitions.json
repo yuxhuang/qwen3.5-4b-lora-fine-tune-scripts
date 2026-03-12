@@ -1,0 +1,51 @@
+{
+  "tools": [
+    {
+      "name": "fetch_url",
+      "description": "Fetch the raw HTML content from a URL (e.g. via curl). Returns the response body as a string.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "url": { "type": "string", "description": "The URL to fetch." }
+        },
+        "required": ["url"]
+      }
+    },
+    {
+      "name": "save_page",
+      "description": "Save HTML content to a local file path.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "content": { "type": "string", "description": "The HTML content to save." },
+          "path": { "type": "string", "description": "Local filesystem path where to save the file." }
+        },
+        "required": ["content", "path"]
+      }
+    },
+    {
+      "name": "extract_dom_content",
+      "description": "Extract text content from HTML at a given DOM location (CSS selector or XPath).",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "path": { "type": "string", "description": "Path to the local HTML file to parse." },
+          "selector": { "type": "string", "description": "CSS selector or XPath identifying the element(s) to extract." }
+        },
+        "required": ["path", "selector"]
+      }
+    },
+    {
+      "name": "validate_content",
+      "description": "Check whether extracted content contains the expected text (exact or substring match).",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "extracted_content": { "type": "string", "description": "The text that was extracted from the page." },
+          "expected_text": { "type": "string", "description": "The text that must appear in the extracted content." }
+        },
+        "required": ["extracted_content", "expected_text"]
+      }
+    }
+  ]
+}

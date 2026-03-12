@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.cursor/
+outputs/lora_sft/checkpoint-*/
+outputs/lora_sft/README.md
+outputs/**/training_args.bin
